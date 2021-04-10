@@ -85,10 +85,10 @@ module.exports = {
                     priority: -1,
                     filename: 'mat-ui.js'
                 },
-                vendor: {
+                react: {
                     test: /[\\/]node_modules[\\/](react|redux).+/,
                     priority: -2,
-                    filename: 'reacts.js'
+                    filename: 'react.js'
                 },
                 other: {
                     priority: -10,
