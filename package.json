@@ -1,0 +1,52 @@
+{
+  "name": "mind-calculate",
+  "version": "1.0.0",
+  "description": "Устный счёт",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "d": "webpack -d --mode development",
+    "d:s": "webpack-dev-server --hot --mode development",
+    "d:w": "webpack -d --mode development --watch",
+    "p": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwlad/mind-calculate.git"
+  },
+  "keywords": [],
+  "author": "edwlad",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/edwlad/mind-calculate/issues"
+  },
+  "homepage": "https://github.com/edwlad/mind-calculate#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.3",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typeface-roboto": "^1.1.13"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "bitbar-webpack-progress-plugin": "^1.0.0",
+    "css-loader": "^5.2.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "i18n-webpack-plugin": "^1.0.0",
+    "mini-css-extract-plugin": "^1.4.1",
+    "style-loader": "^2.0.0",
+    "svg-inline-loader": "^0.8.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
