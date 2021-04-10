@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 //const BitBarWebpackProgressPlugin = require("bitbar-webpack-progress-plugin");
 
 module.exports = {
@@ -33,7 +34,6 @@ module.exports = {
                 use: 'svg-inline-loader',
             },
             {
-                //test: /\.(png|svg|jpg)$/,
                 test: /\.(png|jpg)$/,
                 loader: 'file-loader',
                 options: {
@@ -69,6 +69,11 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: 'app/index.html'
+        }),
+        new CopyPlugin({
+            patterns: [
+              { from: 'app/nabor/*.txt', to: "nabor/[name][ext]" },
+            ],
         })
     ],
     optimization: {
