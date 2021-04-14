@@ -73,6 +73,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
               { from: 'app/nabor/*.txt', to: "nabor/[name][ext]" },
+              { from: 'app/*.php', to: "[name][ext]" },
             ],
         })
     ],
