@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/styles';
-import withWidth from '@material-ui/core/withWidth';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -21,13 +21,6 @@ const useStyles = makeStyles({
         marginBottom: "300px",
     }
 });
-const spisokVid = {
-    'xs': { 'selT': 'h5', 'selF': 'h6', 'prim': 6, 'head': 'body2' },
-    'sm': { 'selT': 'h4', 'selF': 'h5', 'prim': 5, 'head': 'h6' },
-    'md': { 'selT': 'h3', 'selF': 'h4', 'prim': 4, 'head': 'h6' },
-    'lg': { 'selT': 'h3', 'selF': 'h4', 'prim': 4, 'head': 'h5' },
-    'xl': { 'selT': 'h3', 'selF': 'h4', 'prim': 4, 'head': 'h5' }
-};
 
 function ClearNext(props) {
     return (
@@ -60,6 +53,19 @@ function ClearNext(props) {
 
 function Spisok(props) {
     const classes = useStyles();
+    const point = {
+        'xl': useMediaQuery('(min-width:1920px)'),
+        'lg': useMediaQuery('(min-width:1280px)'),
+        'md': useMediaQuery('(min-width:960px)'),
+        'sm': useMediaQuery('(min-width:600px)'),
+        'xs': true
+    }
+    let par;
+    if (point['xl']) par = { 'selT': 'h3', 'selF': 'h4', 'prim': 4, 'head': 'h5' };
+    else if (point['lg']) par = { 'selT': 'h3', 'selF': 'h4', 'prim': 4, 'head': 'h5' };
+    else if (point['md']) par = { 'selT': 'h3', 'selF': 'h4', 'prim': 4, 'head': 'h6' };
+    else if (point['sm']) par = { 'selT': 'h4', 'selF': 'h5', 'prim': 5, 'head': 'h6' };
+    else par = { 'selT': 'h5', 'selF': 'h6', 'prim': 6, 'head': 'body2' };
 
     function spisokCheck(ev) {
         //console.log(ev);
@@ -67,6 +73,7 @@ function Spisok(props) {
             props.spisokCheck(ev.target.offsetParent.id);
         }
     };
+
     useEffect(() => {
         let nextEl = document.getElementById(props.spisokId);
         if (nextEl != undefined) {
@@ -80,7 +87,7 @@ function Spisok(props) {
             <ClearNext disp={props.disp} />
 
             {(props.spisokProps.head)
-                ? <Typography align="center" variant={spisokVid[props.width].head}>
+                ? <Typography align="center" variant={par.head}>
                     {props.spisokProps.head}
                 </Typography>
                 : null
@@ -88,7 +95,6 @@ function Spisok(props) {
 
             {props.spisok.map((value, index) => {
                 let sel = (props.spisokId == value.id);
-                let par = spisokVid[props.width];
                 let txt = ((props.spisokState[value.id] && props.spisokState[value.id].text) || '');
                 let prov = ((props.spisokState[value.id] && props.spisokState[value.id].prov) || '');
                 let time = ((props.spisokState[value.id] && props.spisokState[value.id].timeText) || '');
@@ -158,4 +164,4 @@ function Spisok(props) {
     );
 }
 
-export default withWidth()(Spisok);
+export default Spisok;

@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "p": "webpack --mode production",
-    "d": "webpack --mode development",
+    "d": "webpack --mode development --env test",
     "d:s": "webpack serve --hot --mode development",
     "d:w": "webpack --watch --mode development --env test",
     "test": "echo \"Error: no test specified\" && exit 1"
